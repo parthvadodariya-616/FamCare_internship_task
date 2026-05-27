@@ -197,7 +197,6 @@ flutter run
 
 ### Screens
 
-- `lib/screens/splash_screen.dart` — animated splash
 - `lib/screens/patient_select_screen.dart` — patient picker (loads from API)
 - `lib/screens/main_shell.dart` — bottom nav shell (Home, Services, Cart, Profile)
 - `lib/screens/home_screen.dart` — dashboard and quick actions
@@ -251,24 +250,25 @@ Rules enforced at the DB level:
 Place your screenshots here and keep the exact filenames. You can replace the PNGs later without changing this README.
 
 ```
-fam_care/assets/previews/
-├── patient_select.png
-├── home.png
-├── services.png
-├── slot_picker.png
-├── cart.png
-├── checkout_result.png
-└── profile.png
+assets/
+├── _patient_select.png
+├── _home.png
+├── _services.png
+├── _slot_picker.png
+├── _cart.png
+├── _checkout_result.png
+├── _profile.png
+└── thumbnail.png
 ```
 
 
-![Patient Select](fam_care/assets/previews/_patient_select.png)
-![Home](fam_care/assets/previews/_home.png)
-![Services](fam_care/assets/previews/_services.png)
-![Slot Picker](fam_care/assets/previews/_slot_picker.png)
-![Cart](fam_care/assets/previews/_cart.png)
-![Checkout Result](fam_care/assets/previews/_checkout_result.png)
-![Profile](fam_care/assets/previews/_profile.png)
+![Patient Select](assets/_patient_select.png)
+![Home](assets/_home.png)
+![Services](assets/_services.png)
+![Slot Picker](assets/_slot_picker.png)
+![Cart](assets/_cart.png)
+![Checkout Result](assets/_checkout_result.png)
+![Profile](assets/_profile.png)
 
 ---
 
@@ -277,4 +277,4 @@ fam_care/assets/previews/
 - Figma community file: [Figma design](https://www.figma.com/community/file/1641456613578851901)
 - Thumbnail (included in repo): ![Figma Thumbnail](assets/thumbnail.png)
 
-Note: Place the Figma thumbnail image at `assets/thumbnail.png` (replace the placeholder if you prefer a different image).
+Note: The thumbnail is already in `assets/thumbnail.png`.
