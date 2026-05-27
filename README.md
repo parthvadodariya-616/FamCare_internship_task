@@ -269,3 +269,12 @@ fam_care/assets/previews/
 ![Cart](fam_care/assets/previews/_cart.png)
 ![Checkout Result](fam_care/assets/previews/_checkout_result.png)
 ![Profile](fam_care/assets/previews/_profile.png)
+
+---
+
+## Design
+
+- Figma community file: [Figma design](https://www.figma.com/community/file/1641456613578851901)
+- Thumbnail (included in repo): ![Figma Thumbnail](assets/thumbnail.png)
+
+Note: Place the Figma thumbnail image at `assets/thumbnail.png` (replace the placeholder if you prefer a different image).
