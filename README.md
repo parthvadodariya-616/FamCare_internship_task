@@ -262,13 +262,20 @@ assets/
 ```
 
 
-![Patient Select](assets/_patient_select.png)
-![Home](assets/_home.png)
-![Services](assets/_services.png)
-![Slot Picker](assets/_slot_picker.png)
-![Cart](assets/_cart.png)
-![Checkout Result](assets/_checkout_result.png)
-![Profile](assets/_profile.png)
+1. Patient Select screen
+    ![Patient Select](assets/_patient_select.png)
+2. Home screen
+    ![Home](assets/_home.png)
+3. Services screen
+    ![Services](assets/_services.png)
+4. Slot Picker screen
+    ![Slot Picker](assets/_slot_picker.png)
+5. Cart screen
+    ![Cart](assets/_cart.png)
+6. Checkout Result screen
+    ![Checkout Result](assets/_checkout_result.png)
+7. Profile screen
+    ![Profile](assets/_profile.png)
 
 ---
 
@@ -277,4 +284,4 @@ assets/
 - Figma community file: [Figma design](https://www.figma.com/community/file/1641456613578851901)
 - Thumbnail (included in repo): ![Figma Thumbnail](assets/thumbnail.png)
 
-Note: The thumbnail is already in `assets/thumbnail.png`.
+Note: `ss` means screen, so the numbered items above describe the app screens rather than PNG file names.
