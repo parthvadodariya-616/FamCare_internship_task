@@ -6,14 +6,33 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:fam_care/main.dart';
+import 'package:fam_care/models/booking_model.dart';
+import 'package:fam_care/providers/patients_provider.dart';
 
 void main() {
-  testWidgets('Shows splash branding', (WidgetTester tester) async {
-    await tester.pumpWidget(const FamCareApp());
+  testWidgets('Shows patient selection screen', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          patientsProvider.overrideWith((ref) async => [
+                PatientModel(
+                  id: '1',
+                  name: 'Test Patient',
+                  email: 'test@example.com',
+                  phone: '1234567890',
+                ),
+              ]),
+        ],
+        child: const FamCareApp(),
+      ),
+    );
 
-    expect(find.text('FamCARE'), findsOneWidget);
-    expect(find.text('Home healthcare, on your schedule'), findsOneWidget);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Select Patient'), findsOneWidget);
+    expect(find.text('Test Patient'), findsOneWidget);
   });
 }
