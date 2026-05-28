@@ -20,12 +20,12 @@ class FcErrorBanner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(TIcons.alertCircle, size: 18, color: AppTheme.redText),
+          const Icon(TIcons.alertCircle, size: 18, color: AppTheme.redText),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
               message,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 13,
                 color: AppTheme.redText,
                 fontWeight: FontWeight.w500,
@@ -36,7 +36,7 @@ class FcErrorBanner extends StatelessWidget {
             const SizedBox(width: 8),
             GestureDetector(
               onTap: onRetry,
-              child: Text(
+              child: const Text(
                 'Retry',
                 style: TextStyle(
                   fontSize: 13,
