@@ -44,13 +44,13 @@ class BookingConfirmed {
   });
 
   factory BookingConfirmed.fromJson(Map<String, dynamic> j) => BookingConfirmed(
-    bookingId:    j['booking_id']    as String,
-    serviceName:  j['service_name']  as String,
-    caregiverName:j['caregiver_name']as String,
-    bookingDate:  DateTime.parse(j['booking_date'] as String),
-    startTime:    j['start_time']    as String,
-    endTime:      j['end_time']      as String,
-    price:        double.parse(j['price'].toString()),
+    bookingId:    j['booking_id']?.toString() ?? '',
+    serviceName:  j['service_name']?.toString() ?? '',
+    caregiverName:j['caregiver_name']?.toString() ?? '',
+    bookingDate:  DateTime.tryParse(j['booking_date']?.toString() ?? '') ?? DateTime.now(),
+    startTime:    j['start_time']?.toString() ?? '',
+    endTime:      j['end_time']?.toString() ?? '',
+    price:        double.tryParse(j['price']?.toString() ?? '') ?? 0.0,
   );
 }
 
@@ -67,11 +67,11 @@ class CheckoutSuccess {
   });
 
   factory CheckoutSuccess.fromJson(Map<String, dynamic> j) => CheckoutSuccess(
-    bookings:   (j['bookings'] as List)
+    bookings:   ((j['bookings'] is List) ? (j['bookings'] as List) : [])
         .map((b) => BookingConfirmed.fromJson(b as Map<String, dynamic>))
         .toList(),
-    totalPrice: double.parse(j['total_price'].toString()),
-    message:    j['message'] as String? ?? 'All bookings confirmed',
+    totalPrice: double.tryParse(j['total_price']?.toString() ?? '') ?? 0.0,
+    message:    j['message']?.toString() ?? 'All bookings confirmed',
   );
 }
 
@@ -91,11 +91,11 @@ class FailedItem {
   });
 
   factory FailedItem.fromJson(Map<String, dynamic> j) => FailedItem(
-    serviceId:   j['service_id']   as String,
-    caregiverId: j['caregiver_id'] as String,
-    bookingDate: j['booking_date'] as String,
-    startTime:   j['start_time']   as String,
-    reason:      j['reason']       as String,
+    serviceId:   j['service_id']?.toString() ?? '',
+    caregiverId: j['caregiver_id']?.toString() ?? '',
+    bookingDate: j['booking_date']?.toString() ?? '',
+    startTime:   j['start_time']?.toString() ?? '',
+    reason:      j['reason']?.toString() ?? '',
   );
 }
 
@@ -106,8 +106,8 @@ class CheckoutFailure {
   CheckoutFailure({required this.message, required this.failedItem});
 
   factory CheckoutFailure.fromJson(Map<String, dynamic> j) => CheckoutFailure(
-    message:    j['message']     as String,
-    failedItem: FailedItem.fromJson(j['failed_item'] as Map<String, dynamic>),
+    message:    j['message']?.toString() ?? 'Checkout failed',
+    failedItem: FailedItem.fromJson(j['failed_item'] as Map<String, dynamic>? ?? {}),
   );
 }
 
@@ -126,10 +126,10 @@ class PatientModel {
   });
 
   factory PatientModel.fromJson(Map<String, dynamic> j) => PatientModel(
-    id:    j['id']    as String,
-    name:  j['name']  as String,
-    email: j['email'] as String,
-    phone: j['phone'] as String,
+    id:    j['id']?.toString() ?? '',
+    name:  j['name']?.toString() ?? '',
+    email: j['email']?.toString() ?? '',
+    phone: j['phone']?.toString() ?? '',
   );
 
   String get initials {

@@ -243,22 +243,125 @@ class _CartScreenState extends ConsumerState<CartScreen> {
   void _showClearDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        title: const Text('Clear Cart'),
-        content: const Text('Remove all items from your cart?'),
-        actions: [
-          TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel')),
-          TextButton(
-            onPressed: () {
-              ref.read(cartProvider.notifier).clearCart();
-              Navigator.pop(context);
-            },
-            child: const Text('Clear',
-                style: TextStyle(color: AppTheme.danger)),
+      barrierColor: Colors.black.withOpacity(0.35),
+      builder: (dialogContext) => Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: AppTheme.border, width: 0.8),
+            boxShadow: const [
+              BoxShadow(
+                color: Color(0x1F000000),
+                blurRadius: 24,
+                offset: Offset(0, 12),
+              ),
+            ],
           ),
-        ],
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
+                decoration: const BoxDecoration(
+                  color: AppTheme.blueBg,
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(color: AppTheme.border, width: 0.6),
+                      ),
+                      child: const Icon(
+                        TIcons.trash,
+                        color: AppTheme.danger,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: 14),
+                    const Expanded(
+                      child: Text(
+                        'Clear Cart',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
+                          color: AppTheme.primary,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(20, 18, 20, 8),
+                child: Text(
+                  'Remove all items from your cart?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 14,
+                    height: 1.35,
+                    color: AppTheme.secondaryText,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 18),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () => Navigator.of(dialogContext).pop(),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppTheme.primary,
+                          side: const BorderSide(color: AppTheme.border),
+                          minimumSize: const Size.fromHeight(48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                        child: const Text(
+                          'Cancel',
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          ref.read(cartProvider.notifier).clearCart();
+                          Navigator.of(dialogContext).pop();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppTheme.danger,
+                          foregroundColor: Colors.white,
+                          minimumSize: const Size.fromHeight(48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                        child: const Text(
+                          'Clear',
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -280,8 +383,8 @@ class _PatientChip extends StatelessWidget {
         children: [
           const Icon(TIcons.user, size: 16, color: AppTheme.blueText),
           const SizedBox(width: 8),
-          Text('Booking for: ',
-              style: const TextStyle(fontSize: 13,
+          const Text('Booking for: ',
+              style: TextStyle(fontSize: 13,
                   color: AppTheme.blueText)),
           Text(name,
               style: const TextStyle(fontSize: 13,
@@ -335,7 +438,7 @@ class _CartItemCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              FcBadge(label: 'Pending', variant: BadgeVariant.amber),
+              const FcBadge(label: 'Pending', variant: BadgeVariant.amber),
               Text('₹${item.price.toStringAsFixed(2)}',
                   style: const TextStyle(
                       fontSize: 14, fontWeight: FontWeight.w700,
